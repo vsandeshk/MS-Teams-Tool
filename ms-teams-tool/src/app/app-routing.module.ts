@@ -6,11 +6,12 @@ import { MsalGuard } from '@azure/msal-angular';
 import { DetailComponent } from './detail/detail.component';
 import { FailedComponent } from './failed/failed.component';
 import { MyChannelsComponent } from './my-channels/my-channels.component';
+import { CreateChannelComponent } from './create-channel/create-channel.component';
 
 const routes: Routes = [
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'create-channels',
+    component: CreateChannelComponent,
     canActivate: [MsalGuard]
   },
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
     component: FailedComponent
   },
   {
-    path: 'my-channels',
+    path: 'channels',
     component: MyChannelsComponent,
     canActivate: [MsalGuard]
   }

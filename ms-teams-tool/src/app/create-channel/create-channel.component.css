@@ -1,0 +1,16 @@
+
+.mat-form-field {
+  font-size: 14px;
+  padding: 30px;
+  width: 25%;
+}
+
+form {
+  background-color: white;
+}
+
+.mat-raised-button, .mat-spinner {
+  width: 27%;
+  margin-left: 38%;
+  margin-bottom: 4%;
+}

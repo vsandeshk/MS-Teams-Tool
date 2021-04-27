@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 
-export interface UserData {
+export interface ChannelData {
   channelID: string;
   teamID: string;
   teamName: string;
@@ -20,10 +20,10 @@ export interface UserData {
 })
 export class MyChannelsComponent implements OnInit {
 
-  tableData: UserData[];
+  tableData: ChannelData[];
 
   displayedColumns: string[] = ['teamName', 'channelName', 'description', 'createDate'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<ChannelData>;
 
   spin: boolean;
 
@@ -71,27 +71,21 @@ export class MyChannelsComponent implements OnInit {
   getChannels(teamID, teamName) {
 
     let endpoint = 'https://graph.microsoft.com/v1.0/teams/' + teamID + '/channels';
-    this.http.get<any>(endpoint)
-      .subscribe(response => {
-
+    this.http.get<any>(endpoint).subscribe(response => {
         if (response.value) {
           let channels = response.value;
           for (let x in channels) {
-            let data = {} as UserData;
+            let data = {} as ChannelData;
             data.channelID = channels[x].id;
             data.teamID = teamID;
             data.teamName = teamName;
             data.channelName = channels[x].displayName;
             data.description = channels[x].description;
             data.createDate = channels[x].createdDateTime;
-
             this.tableData.push(data);
-
           }
           this.setTableData(this.tableData);
-
         }
-
       });
 
   }

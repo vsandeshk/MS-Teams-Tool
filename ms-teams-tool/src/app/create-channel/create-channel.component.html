@@ -1,0 +1,17 @@
+<h1> Create New Channel </h1>
+
+<div class="mat-elevation-z8">
+  <form [formGroup]="formGroup" (ngSubmit)="createChannel()">
+  <mat-form-field appearance="standard">
+    <mat-label>Channel Name</mat-label>
+    <input matInput placeholder="channel name" formControlName="displayName">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Channel Description</mat-label>
+    <input matInput placeholder="channel description" formControlName="description">
+  </mat-form-field>
+  <br>
+  <mat-spinner [diameter]="50" *ngIf="spin"></mat-spinner>
+  <button mat-raised-button *ngIf="!spin" color="primary" type="submit">Submit</button>
+</form>
+</div>

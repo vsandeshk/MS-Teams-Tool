@@ -14,12 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyChannelsComponent } from './my-channels/my-channels.component';
+import { CreateChannelComponent } from './create-channel/create-channel.component';
 
 import { TokenInterceptorService } from './token-interceptor.service';
 
@@ -73,7 +76,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
     authRequest: {
-      scopes: ['user.read']
+      scopes: ['user.read', 'Team.Create', 'User.ReadBasic.All', 'User.ReadWrite']
     },
     loginFailedRoute: '/login-failed'
   };
@@ -85,7 +88,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     HomeComponent,
     ProfileComponent,
     DetailComponent,
-    MyChannelsComponent
+    MyChannelsComponent,
+    CreateChannelComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatMenuModule,
     MatTableModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
     MatPaginatorModule,
     HttpClientModule,
     MsalModule
