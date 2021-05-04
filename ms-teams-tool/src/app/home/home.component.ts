@@ -14,12 +14,13 @@ export class HomeComponent implements OnInit {
   constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService) { }
 
   ngOnInit(): void {
+    console.log("test");
+
     this.msalBroadcastService.msalSubject$
       .pipe(
         filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
       )
       .subscribe((result: EventMessage) => {
-        console.log("check results", result);
         const payload = result.payload as AuthenticationResult;
         this.authService.instance.setActiveAccount(payload.account);
       });

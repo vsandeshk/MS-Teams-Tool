@@ -1,0 +1,17 @@
+
+table {
+  width: 100%;
+}
+
+channel-main {
+  padding: 100px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 50%;
+}
+
+.add-button {
+  margin-left: 20px;
+}

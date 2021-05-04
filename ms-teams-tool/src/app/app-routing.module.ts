@@ -7,6 +7,8 @@ import { DetailComponent } from './detail/detail.component';
 import { FailedComponent } from './failed/failed.component';
 import { MyChannelsComponent } from './my-channels/my-channels.component';
 import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { ViewMembersComponent } from './view-members/view-members.component';
+import { AddMemberComponent } from './add-member/add-member.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,16 @@ const routes: Routes = [
   {
     path: 'channels',
     component: MyChannelsComponent,
+    canActivate: [MsalGuard]
+  },
+  {
+    path: 'channels/members',
+    component: ViewMembersComponent,
+    canActivate: [MsalGuard]
+  },
+  {
+    path: 'channels/members/add',
+    component: AddMemberComponent,
     canActivate: [MsalGuard]
   }
 ];

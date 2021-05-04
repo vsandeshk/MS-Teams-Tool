@@ -16,6 +16,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewMembersComponent } from './view-members/view-members.component';
+import { AddMemberComponent } from './add-member/add-member.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,9 +43,9 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       // clientId: '6226576d-37e9-49eb-b201-ec1eeb0029b6', // Prod enviroment. Uncomment to use.
-      clientId: '28edbd9c-8615-4eb1-aca2-7857d2ba0079', // PPE testing environment
-      // authority: 'https://login.microsoftonline.com/common', // Prod environment. Uncomment to use.
-      authority: "https://login.microsoftonline.com/75df096c-8b72-48e4-9b91-cbf79d87ee3a",
+      clientId: 'd469dab0-eef9-4ae3-922b-9e6bcf9e0eb1', // PPE testing environment
+  //     authority: 'https://login.microsoftonline.com/common', // Prod environment. Uncomment to use.
+      authority: "https://login.microsoftonline.com/ccbd7f46-71e2-4b42-a596-971adff38033",
       redirectUri: 'http://localhost:4200',
       postLogoutRedirectUri: 'http://localhost:4200'
     },
@@ -63,8 +65,8 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']); // Prod environment. Uncomment to use.
-//  protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', ['user.read']);
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']); // Prod environment. Uncomment to use.
+  //  protectedResourceMap.set('https://graph.microsoft-ppe.com/v1.0/me', ['user.read']);
 
   return {
     interactionType: InteractionType.Redirect,
@@ -76,7 +78,11 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
     authRequest: {
-      scopes: ['user.read', 'Team.Create', 'User.ReadBasic.All', 'User.ReadWrite']
+      scopes: ['user.read',
+        'Team.Create',
+        'User.ReadBasic.All', 'TeamMember.ReadWrite.All', 'Team.ReadBasic.All',
+        'User.ReadWrite', 'ChannelMember.Read.All',
+        'ChannelMember.ReadWrite.All']
     },
     loginFailedRoute: '/login-failed'
   };
@@ -89,7 +95,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ProfileComponent,
     DetailComponent,
     MyChannelsComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    ViewMembersComponent,
+    AddMemberComponent
   ],
   imports: [
     BrowserModule,
