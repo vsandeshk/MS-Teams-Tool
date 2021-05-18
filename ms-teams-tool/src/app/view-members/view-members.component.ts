@@ -67,17 +67,14 @@ export class ViewMembersComponent implements OnInit {
   deleteMember(memberID) {
     let channelID = localStorage.getItem("channelID");
     let teamID = localStorage.getItem("teamID");
-    let endpoint = 'https://graph.microsoft.com/v1.0/teams/'
+    let endpoint = 'https://graph.microsoft.com/v1.0/teams/';
     endpoint += teamID;
-    endpoint += '/members/'
+    endpoint += '/members/';
     endpoint += memberID;
     this.http.delete<any>(endpoint)
       .subscribe(response => {
-        console.log(response);
         alert("Member removed from channel!")
-
         this.getMembers();
-
       });
   }
 
@@ -91,13 +88,10 @@ export class ViewMembersComponent implements OnInit {
     endpoint += '/members';
     this.http.get<any>(endpoint)
       .subscribe(response => {
-        console.log(response.value);
         this.tableData = [];
         if (response.value) {
             let users = response.value;
             for (let x in users) {
-              console.log(response.value);
-
               let data = {} as UserData;
               data.serialNo = x+1;
               data.memberID = users[x].id;
@@ -106,7 +100,6 @@ export class ViewMembersComponent implements OnInit {
               if (data.role.length == 0) {
                 data.role = "member";
               }
-
               data.mail = users[x].email;
               data.displayName = users[x].displayName;
               this.tableData.push(data);

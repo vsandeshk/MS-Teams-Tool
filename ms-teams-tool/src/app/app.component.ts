@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 11 - Angular v2 Sample';
+  title = 'MS Teams Tool';
   isIframe = false;
   loginDisplay = false;
   mobileQuery: MediaQueryList;
@@ -91,8 +91,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.msalGuardConfig.authRequest) {
       this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest } as RedirectRequest);
     } else {
-      console.log("test");
-
       this.authService.loginRedirect();
     }
   }

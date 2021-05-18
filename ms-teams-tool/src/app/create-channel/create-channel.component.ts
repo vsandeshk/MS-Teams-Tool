@@ -54,7 +54,7 @@ createChannel() {
 
     this.http.post<any>(endpoint, reqObj).subscribe(response => {
 
-      alert("Request Submitted to MS Teams. Please verify in 'My Channels' after few minutes.");
+      alert("Request to create channel is submitted to MS Teams. Please verify in 'My Channels' after few minutes.");
 
       this.resetFields();
 

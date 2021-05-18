@@ -17,16 +17,6 @@ const routes: Routes = [
     canActivate: [MsalGuard]
   },
   {
-    path: 'profile',
-    canActivateChild: [MsalGuard],
-    children: [
-      {
-        path: 'detail',
-        component: DetailComponent
-      }
-    ]
-  },
-  {
     path: 'lazyLoad',
     loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule),
     canLoad: [MsalGuard]

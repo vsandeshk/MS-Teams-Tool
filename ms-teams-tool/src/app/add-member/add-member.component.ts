@@ -57,8 +57,6 @@ export class AddMemberComponent implements OnInit {
   }
 
   getUsers() {
-    let channelID = localStorage.getItem("channelID");
-    let teamID = localStorage.getItem("teamID");
     let endpoint = 'https://graph.microsoft.com/v1.0/users';
     this.http.get<any>(endpoint)
       .subscribe(response => {
@@ -84,26 +82,19 @@ export class AddMemberComponent implements OnInit {
     let endpoint = 'https://graph.microsoft.com/v1.0/teams/'
     endpoint += teamID;
     endpoint += '/members';
-
     userID = "https://graph.microsoft.com/v1.0/users/"+userID;
-    console.log(userID);
-
     let postObj = {
       "@odata.type": "#microsoft.graph.aadUserConversationMember",
       roles: [],
       "user@odata.bind": userID
     }
-    console.log(postObj);
-
     this.http.post<any>(endpoint, postObj)
       .subscribe(response => {
-        console.log(response);
         if (response) {
-          alert("Request is Submitted");
+          alert("Request to add member is submitted.");
           this.router.navigate(['channels/members'])
         }
       });
   }
-
 
 }

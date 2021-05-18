@@ -1,7 +1,7 @@
 <div *ngIf="!loginDisplay" fxLayoutAlign="center center" fxFlexFill class="login-main-div">
   <mat-card fxFlex="30">
     <mat-toolbar color="primary">
-      <h1 class="app-name">MS Teams Tool</h1>
+      <h1 class="app-name">{{title}}</h1>
     </mat-toolbar>
     <div fxLayoutAlign="stretch" fxLayout="column" class="login-form">
       <button color="primary" mat-raised-button class="submit-button" (click)="loginRedirect()">Login</button>
@@ -14,7 +14,7 @@
     <button mat-icon-button (click)="!snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="app-name">MS Teams Tool</h1>
+    <h1 class="app-name">{{title}}</h1>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
