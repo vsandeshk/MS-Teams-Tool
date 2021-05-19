@@ -1,10 +1,10 @@
 # MS Teams Tool
 
 
-#Go to the ms-teams-tool directory
+# Go to the ms-teams-tool directory
 
-#run command 'npm install'
+# run command 'npm install'
 
-#After installation of all packages
+# After installation of all packages
 
-#run 'ng serve' command
+# run 'ng serve' command
